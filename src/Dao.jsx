@@ -825,7 +825,7 @@ const Dao = () => {
     {/* --------------------------------------------------------------------------------------------------- */
     }
     if (e.target.name === 'removeProposalCouncilMember') {
-      const councilAccountValid = daoPolicy.roles[1].kind.Group.includes(proposalTarget.value)
+      const councilAccountValid = daoPolicy.roles[1] && daoPolicy.roles[1].kind && daoPolicy.roles[1].kind.Group && daoPolicy.roles[1].kind.Group.includes(proposalTarget.value)
       let validateDescription = validateField("proposalDescription", proposalDescription.value);
 
       if (councilAccountValid && validateDescription) {
@@ -1143,6 +1143,7 @@ const Dao = () => {
 
 
   let roles = daoPolicy ? daoPolicy.roles.filter((item) => item.name !== 'all') : []
+  console.log(daoPolicy);
   return (
     <>
       <MDBView className="w-100 h-100" style={{minHeight: "100vh"}}>
@@ -1169,8 +1170,8 @@ const Dao = () => {
                             <MDBCard className="p-0 m-2 stylish-color-dark white-text" key={key}>
                               <MDBCardHeader className="h4-responsive">{item.name}</MDBCardHeader>
                               <MDBCardBody className="p-4">
-                                {item.kind.Group.map((i, k) => <div
-                                  key={k}>{i}</div>)}
+                                {(item.kind.Group ? item.kind.Group.map((i, k) => <div
+                                  key={k}>{i}</div>) : <> Minimum Votes: {item.kind.Member} </>)}
                               </MDBCardBody>
                             </MDBCard>)}
                         </MDBCol>
@@ -1396,7 +1397,7 @@ const Dao = () => {
                             </div>
                             <MDBBtn onClick={toggleNewCouncilMember}
                                     color="blue-grey" size="sm" className="float-left">Add</MDBBtn>
-                            <MDBBtn disabled={daoPolicy.roles[1].kind.Group.length < 2}
+                            <MDBBtn disabled={daoPolicy.roles[1] && daoPolicy.roles[1].kind && daoPolicy.roles[1].kind.Group && daoPolicy.roles[1].kind.Group.length < 2}
                                     onClick={toggleRemoveCouncilMember} color="red" size="sm"
                                     className="float-right">Remove</MDBBtn>
                           </MDBCardBody>

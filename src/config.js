@@ -1,4 +1,4 @@
-const CONTRACT_NAME = 'sputnikv2.testnet'
+const CONTRACT_NAME = 'sputnikr2v2.moopaloo.testnet'
 
 function getConfig(env) {
   switch (env) {

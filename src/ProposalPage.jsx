@@ -430,7 +430,7 @@ export const Proposal = (props) => {
 
               </MDBCardText>
 
-              {props.daoPolicy.roles[1].kind.Group.includes(window.walletConnection.getAccountId()) ?
+              {props.daoPolicy.roles[1].kind.Group && props.daoPolicy.roles[1].kind.Group.includes(window.walletConnection.getAccountId()) ?
                 <MDBTooltip
                   tag="span"
                   placement="top"
@@ -468,7 +468,7 @@ export const Proposal = (props) => {
                 </MDBTooltip>
                 : null}
 
-              {props.daoPolicy.roles[1].kind.Group.includes(window.walletConnection.getAccountId()) ?
+              {props.daoPolicy.roles[1].kind.Group && props.daoPolicy.roles[1].kind.Group.includes(window.walletConnection.getAccountId()) ?
                 <MDBTooltip
                   tag="span"
                   placement="top"
@@ -487,7 +487,7 @@ export const Proposal = (props) => {
                 </MDBTooltip>
                 : null}
 
-              {props.daoPolicy.roles[1].kind.Group.includes(window.walletConnection.getAccountId()) ?
+              {props.daoPolicy.roles[1].kind.Group && props.daoPolicy.roles[1].kind.Group.includes(window.walletConnection.getAccountId()) ?
                 <MDBTooltip
                   tag="span"
                   placement="top"
@@ -705,7 +705,7 @@ const ProposalPage = () => {
                   <MDBCardBody className="text-left p-4 m-4 white-text">
                     <MDBBox><b>Proposal DAO:</b> {dao}</MDBBox>
                     <MDBBox><b>Council:</b>
-                      {daoPolicy && daoPolicy.roles ? daoPolicy.roles[1].kind.Group.map((item, key) => <div
+                      {(daoPolicy && daoPolicy.roles && daoPolicy.roles[1].kind.Group) ? daoPolicy.roles[1].kind.Group.map((item, key) => <div
                         key={key}>{item}</div>) : null}
                     </MDBBox>
                     <hr/>
