@@ -1,0 +1,7 @@
+near call dev-1624406486386-79437689012031 nft_approve '{
+  "token_id": "token-1631995062070",
+  "account_id": "market-dao-staking.stake-your-nfts.moopaloo.testnet"
+}' --account_id morenear.testnet --depositYocto 630000000000000000000
+
+near call dev-1624406486386-79437689012031 nft_tokens '{"from_index": "1", "limit":1}' --accountId morenear.testnet 
+
